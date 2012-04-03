@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/libri</property>
+    <property name="hibernate.connection.username">root</property>
+    <mapping resource="POJO/Editora.hbm.xml"/>
+    <mapping resource="POJO/Emprestimo.hbm.xml"/>
+    <mapping resource="POJO/Livro.hbm.xml"/>
+    <mapping resource="POJO/Usuario.hbm.xml"/>
+    <mapping resource="POJO/DadosUsuario.hbm.xml"/>
+    <mapping resource="POJO/MidiaDigital.hbm.xml"/>
+    <mapping resource="POJO/Revista.hbm.xml"/>
+    <mapping resource="POJO/Autor.hbm.xml"/>
+    <mapping resource="POJO/Estudio.hbm.xml"/>
+    <mapping resource="POJO/TipoUsuario.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

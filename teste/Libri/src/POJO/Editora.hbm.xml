@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 27, 2012 11:43:06 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="POJO.Editora" table="editora" catalog="libri">
+        <id name="ideditora" type="int">
+            <column name="ideditora" />
+            <generator class="assigned" />
+        </id>
+        <property name="nome" type="string">
+            <column name="nome" length="45" />
+        </property>
+        <set name="revistas" inverse="false" table="editora_has_revista">
+            <key>
+                <column name="editora_ideditora" not-null="true" />
+            </key>
+            <many-to-many entity-name="POJO.Revista">
+                <column name="revista_idrevista" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

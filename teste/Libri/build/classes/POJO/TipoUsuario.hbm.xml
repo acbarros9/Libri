@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 27, 2012 11:43:06 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="POJO.TipoUsuario" table="tipo_usuario" catalog="libri">
+        <id name="idtipoUsuario" type="int">
+            <column name="idtipo_usuario" />
+            <generator class="assigned" />
+        </id>
+        <property name="nomeTipo" type="string">
+            <column name="nome_tipo" length="45" />
+        </property>
+        <property name="boolTipo" type="java.lang.Boolean">
+            <column name="bool_tipo" />
+        </property>
+        <set name="usuarios" inverse="true">
+            <key>
+                <column name="tipo_usuario_idtipo_usuario" not-null="true" />
+            </key>
+            <one-to-many class="POJO.Usuario" />
+        </set>
+    </class>
+</hibernate-mapping>

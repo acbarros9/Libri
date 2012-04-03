@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 27, 2012 11:43:06 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="POJO.Estudio" table="estudio" catalog="libri">
+        <id name="idestudio" type="int">
+            <column name="idestudio" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="midiaDigital" class="POJO.MidiaDigital" fetch="select">
+            <column name="midia_digital_idmidia_digital" not-null="true" />
+        </many-to-one>
+        <property name="nome" type="string">
+            <column name="nome" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

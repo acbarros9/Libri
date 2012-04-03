@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 27, 2012 11:43:06 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="POJO.Livro" table="livro" catalog="libri">
+        <id name="idlivro" type="int">
+            <column name="idlivro" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="emprestimo" class="POJO.Emprestimo" fetch="select">
+            <column name="emprestimo_idemprestimo" not-null="true" />
+        </many-to-one>
+        <property name="titulo" type="string">
+            <column name="titulo" length="45" />
+        </property>
+        <property name="isbn" type="java.lang.Integer">
+            <column name="ISBN" />
+        </property>
+        <property name="idEditora" type="java.lang.Integer">
+            <column name="id_editora" />
+        </property>
+        <property name="edicao" type="string">
+            <column name="edicao" length="45" />
+        </property>
+        <property name="ano" type="java.lang.Integer">
+            <column name="ano" />
+        </property>
+        <property name="quantidade" type="java.lang.Integer">
+            <column name="quantidade" />
+        </property>
+        <property name="raridade" type="java.lang.Integer">
+            <column name="raridade" />
+        </property>
+        <property name="dataCadastro" type="date">
+            <column name="dataCadastro" length="10" />
+        </property>
+        <property name="codigo" type="java.lang.Integer">
+            <column name="codigo" />
+        </property>
+        <property name="dataLancamento" type="date">
+            <column name="dataLancamento" length="10" />
+        </property>
+        <set name="autors" inverse="false" table="autor_has_livro">
+            <key>
+                <column name="livro_idlivro" not-null="true" />
+            </key>
+            <many-to-many entity-name="POJO.Autor">
+                <column name="autor_idAutor" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

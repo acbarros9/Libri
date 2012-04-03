@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 27, 2012 11:43:06 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="POJO.Emprestimo" table="emprestimo" catalog="libri">
+        <id name="idemprestimo" type="int">
+            <column name="idemprestimo" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="usuario" class="POJO.Usuario" fetch="select">
+            <column name="usuario_idusuario" not-null="true" />
+        </many-to-one>
+        <property name="dataEmprestimo" type="date">
+            <column name="dataEmprestimo" length="10" />
+        </property>
+        <property name="dataDevolucao" type="date">
+            <column name="dataDevolucao" length="10" />
+        </property>
+        <property name="usuario_1" type="java.lang.Integer">
+            <column name="usuario" />
+        </property>
+        <property name="codigoObra" type="java.lang.Integer">
+            <column name="codigoObra" />
+        </property>
+        <set name="revistas" inverse="true">
+            <key>
+                <column name="emprestimo_idemprestimo" not-null="true" />
+            </key>
+            <one-to-many class="POJO.Revista" />
+        </set>
+        <set name="livros" inverse="true">
+            <key>
+                <column name="emprestimo_idemprestimo" not-null="true" />
+            </key>
+            <one-to-many class="POJO.Livro" />
+        </set>
+        <set name="midiaDigitals" inverse="true">
+            <key>
+                <column name="emprestimo_idemprestimo" not-null="true" />
+            </key>
+            <one-to-many class="POJO.MidiaDigital" />
+        </set>
+    </class>
+</hibernate-mapping>

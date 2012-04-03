@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 27, 2012 11:43:06 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="POJO.Usuario" table="usuario" catalog="libri">
+        <id name="idusuario" type="java.lang.Integer">
+            <column name="idusuario" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tipoUsuario" class="POJO.TipoUsuario" fetch="select">
+            <column name="tipo_usuario_idtipo_usuario" not-null="true" />
+        </many-to-one>
+        <property name="login" type="string">
+            <column name="login" length="45" />
+        </property>
+        <property name="senha" type="string">
+            <column name="senha" length="45" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" />
+        </property>
+        <set name="dadosUsuarios" inverse="true">
+            <key>
+                <column name="usuario_idusuario" not-null="true" />
+            </key>
+            <one-to-many class="POJO.DadosUsuario" />
+        </set>
+        <set name="emprestimos" inverse="true">
+            <key>
+                <column name="usuario_idusuario" not-null="true" />
+            </key>
+            <one-to-many class="POJO.Emprestimo" />
+        </set>
+    </class>
+</hibernate-mapping>
